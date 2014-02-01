@@ -8,4 +8,4 @@ DartBot is available under the [Creative Commons Attribution-NonCommercial-NoDer
 
 Using Dartbot
 -------
-Include dartbot.js or dartbot.min.js in your html page
+Include dartbot.js or dartbot.min.js found in the dist folder in your html page
