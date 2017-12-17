@@ -58,7 +58,7 @@ export const createScore = (): Score => {
 /**
  * Get turns from a score
  */
-export const getTurns = R.prop<Turn>('turns');
+export const getTurns = R.prop('turns');
 
 /**
  * Get the most recent turn from a score
