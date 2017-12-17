@@ -1,4 +1,4 @@
-import { createBoard } from '../models';
+import { createBoard } from '../board';
 
 const ringData = [
     { r: 6.35, m: 2, p: 25 },  // Double Bull

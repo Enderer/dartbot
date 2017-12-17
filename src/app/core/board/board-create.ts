@@ -1,4 +1,4 @@
-import { Board, Ring, Sector, Section } from '../models';
+import { Board, Ring, Sector, Section } from '../board';
 import { last } from 'ramda';
 import * as _ from 'lodash';
 

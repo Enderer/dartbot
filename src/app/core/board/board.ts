@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as R from 'ramda';
 import { compose, curry, path } from 'ramda';
-import { PolarPoint } from '../models';
+import { PolarPoint } from '../board';
 
 /**
  * Represents a dart board defined by a collection of rings and segments.
