@@ -1,0 +1,5 @@
+<db-x01-nav [game]="game"></db-x01-nav>
+
+<div *ngFor="let score of game?.scores">
+  <div>[{{X01.getPointsLeft(score)}}]</div>
+</div>

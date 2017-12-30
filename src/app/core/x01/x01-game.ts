@@ -7,7 +7,7 @@ export interface Player {
 }
 
 export interface Team {
-    player: Player[];
+    players: Player[];
 }
 
 /** One turn by a player of an X01 game */
@@ -46,10 +46,10 @@ export const createTurn = (points = 0, darts = 0): Turn => {
 };
 
 /** Initializes a score */
-export const createScore = (): Score => {
+export const createScore = (points = 0): Score => {
     return { 
         team: null, 
-        points: 0, 
+        points, 
         turns: [], 
         current: null 
     };
@@ -96,8 +96,9 @@ export const addPoints = R.curry((
 export const endTurn = (score: Score): Score => {
     if (score == null) { return null; }
     const current = score.current || { darts: 0, points: 0 };
-    const turn = score.turns || [];
-    const turns = [...turn, current];
+    const oldTurns = score.turns || [];
+
+    const turns = [...oldTurns, current];
     return { ...score, current: null, turns };
 };
 
@@ -121,7 +122,7 @@ export const cancelTurn = (score: Score): Score => {
 
 /** Gets the total number of darts thrown */
 export const getDarts = (score: Score): number => {
-    const a = R.pipe<Score, Turn[], number[], any, number[], number>(
+    const a = R.pipe<Score, Turn[], Turn[], any, number[], number>(
         R.path(['turns']),
         R.ifElse(R.isNil, R.always([]), R.identity),
         R.map(R.prop('darts')),
@@ -151,20 +152,26 @@ export const getPointsHit = (score: Score): number => {
 /** Gets the remaining points that need to be hit */
 export const getPointsLeft = (score: Score): number => { 
     if (score == null) { return NaN; }
-    if (score.turns && score.turns.length > 0) {
-        const startPoints = score.points;
-        const pointsHit = getPointsHit(score);
-        return startPoints - pointsHit;
-    }
-    return 0;
+    const startPoints = score.points;
+    const pointsHit = getPointsHit(score);
+    return startPoints - pointsHit;
 };
 
 /** Gets the number of points hit on the last turn */
 export const getPointsLastTurn = (score: Score): number => {
     if (score == null) { return NaN; }
-    if (_.isEmpty(score.turns)) { return 0; }
+    if (score.turns == null || _.isEmpty(score.turns)) { return 0; }
     const turn = lastTurn(score);
-    if (turn == null) { return 0; }
     if (turn.points == null) { return NaN; }
     return turn.points;
+};
+
+/** Get the player whos turn it is for a given score */
+export const getCurrentPlayer = (score: Score): Player => {
+    const players = R.path<Player[]>(['team', 'players'], score);
+    const isEmpty = R.isEmpty(players);
+    if (players == null || isEmpty) { return null; }
+    const turns = R.path<Turn[]>(['turns'], score) || [];
+    const p = turns.length % players.length;
+    return score.team.players[p];
 };
