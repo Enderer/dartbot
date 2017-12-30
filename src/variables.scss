@@ -1,0 +1,72 @@
+$enable-rounded:            false !default;
+$enable-shadows:            false !default;
+$enable-gradients:          false !default;
+
+$font-family-sans-serif:    Roboto, 
+                            -apple-system, 
+                            system-ui, 
+                            BlinkMacSystemFont, 
+                            "Segoe UI", 
+                            Roboto, 
+                            "Helvetica Neue", 
+                            Arial, 
+                            sans-serif !default;
+$font-size-lg:              1.25rem;
+
+$white:  #fff !default;
+$black:  #000 !default;
+$red:    #730000 !default;
+$orange: #f0ad4e !default;
+$yellow: #ffd500 !default;
+$green:  limegreen !default;
+$blue:   #0275d8 !default;
+$teal:   #5bc0de !default;
+$pink:   #ff5b77 !default;
+$purple: #613d7c !default;
+
+$gray-darkest:              #0a0a0a !default;
+$gray-darker:               #161616 !default;
+$gray-dark:                 #1a1a1a !default;
+$gray:                      #464a4c !default;
+$gray-light:                #999 !default;
+$gray-lighter:              #eceeef !default;
+$gray-lightest:             #f7f7f9 !default;
+
+$body-bg:                   $gray-dark;
+$body-color:                $gray-light;
+
+$brand-blank:               $gray-dark;
+$brand-faded:               $gray-darker;
+$brand-inverse:             #1c1c1c;
+
+$border-color:              $gray-darkest;
+$text-muted:                #333;
+$text-danger: red;
+$white:                     #fff;
+$text-semibold-font-weight: 600;
+$spacer-y:                  .5rem;
+
+$navbar-inverse-color:      #666 !default;
+$navbar-brand-padding-y:    0;
+$navbar-height:             2.85rem;
+$navbar-padding-y:          0;
+$navitem-padding-y:         0;
+$navitem-align:             center;
+$nav-link-padding-y:        .8rem;
+$nav-link-active-bg:        rgba(0,0,0,.75);
+
+// Secondary Button
+$btn-primary-color:            $white !default;
+$btn-primary-bg:               #242424 !default;
+$btn-primary-border:           $border-color !default;
+$btn-font-weight:               lighter;
+
+
+// Modals
+$modal-content-bg:               $body-bg !default;
+// $modal-content-border-color:     rgba($black,.2) !default;
+// $modal-content-border-width:     $border-width !default;
+// $modal-content-xs-box-shadow:    0 3px 9px rgba($black,.5) !default;
+// $modal-content-sm-up-box-shadow: 0 5px 15px rgba($black,.5) !default;
+
+$list-group-bg:                 $body-bg !default;

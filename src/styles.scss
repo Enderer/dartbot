@@ -1,1 +1,206 @@
-/* You can add global styles to this file, and also import other style files */
+@import './variables.scss';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../node_modules/font-awesome/css/font-awesome.css';
+
+
+// html {
+//     // font-size: 1.5em;
+// }
+
+.font-weight-light {
+    font-weight: lighter;
+}
+
+.font-size-lg {
+    font-size: $font-size-lg;
+}
+
+// Force the modal plugin to remove rounded borders
+.modal-content { border-radius: 0; }
+
+.modal-dialog.modal-fullheight {
+    margin: 0 auto;
+    height: 100%;
+    max-width: 27rem;
+
+    .modal-content {
+        height: 100%;
+    }
+}
+
+/** Modal dialog that slides in from the left */
+.modal .modal-dialog.modal-from-left {
+    -webkit-transform: translate(-25%, 0);
+    transform: translate(-25%, 0);
+}
+
+.modal.show .modal-dialog.modal-from-left {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+
+.navbar-toggleable-xl .navbar-nav .dropdown-menu {
+    position: absolute;
+}
+
+// Remove outline styles for buttons.
+// By default buttons have a glow when they are focused on.
+// This looks strange in most cases so we're removing it here.
+.btn { 
+    outline:none!important;
+    box-shadow: none!important;
+}
+
+.btn-primary:active {
+    background-color: $btn-primary-bg;
+}
+
+// Add a bg-* class for blank background
+// Applies a white background in default theme
+.bg-blank {
+    background-color: $brand-blank;
+}
+
+.bg-faded {
+    background-color: $brand-faded;
+}
+
+a.btn:focus {
+    color: $white;
+}
+
+.bg-wood {
+    background-image: url(/assets/back_wood.jpg);
+    background-size: 70rem;
+    background-position: center top;
+}
+
+.bg-shadow {
+    box-shadow: 0 0 0.8rem 0.3rem rgba(0,0,0,.8);
+}
+
+// Semi bold text
+// This class marks text with a weight of 600 which is not as
+// heavy as full bold but still emphasized compared to normal text
+.font-weight-semibold
+{
+    font-weight: $text-semibold-font-weight;
+}
+
+// Prevents user from selecting or highlighting text. This is useful
+// on buttons or toolbars where you want to prevent accidental selecting.
+.no-select
+{
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+// Allow user to select text. This is useful on elements that have 
+// the no-select applied but you where you want to allow specific 
+// elements to be selectable withing that non-selectable container.
+.allow-select
+{
+    -moz-user-select: auto;
+    -webkit-user-select: auto;
+    -ms-user-select: auto;
+    -o-user-select: auto;
+    user-select: auto;
+}
+
+
+/**
+ * Navbar Custom Heights
+ * Mixin for creating navbar variants with a specific height
+ */
+@mixin navbar-height-variant($height){
+    min-height: $height;
+
+    .navbar-text { color: $navbar-inverse-color; }
+
+    .navbar-nav {
+        .nav-item {
+            min-height: $height;
+            line-height: $height;
+            min-width: $height;
+            text-align: $navitem-align;
+            border: 1px solid $border-color;
+            border-width: 0 0 0 1px;
+
+            &:last-child {
+                border-right-width: 1px;
+            }
+        }
+
+        .nav-link {
+            padding-left: $nav-link-padding-y;
+            padding-right: $nav-link-padding-y;
+            padding-top: 0;
+            padding-bottom: 0;
+
+            &:active {
+                background: $nav-link-active-bg;
+            }
+        }
+    }
+
+    .navbar-text {
+        line-height: $height;
+        padding-top:0;
+        padding-bottom:0;
+    }
+    
+    .navbar-brand {
+        min-height: $height;
+        line-height: $height;
+        vertical-align:middle;
+        padding-top: $navbar-brand-padding-y;
+        padding-bottom:  $navbar-brand-padding-y;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        line-height: $height;
+        margin-bottom:0;
+    }
+
+    // Reset line-height back to normal for dropdown menus
+    // This is broken from inherited styles from parent
+    .dropdown-menu {
+        line-height: $line-height-base;
+    }
+}
+
+// Navbar
+.navbar {
+    @include navbar-height-variant($navbar-height);
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.flex-item {
+    display: flex;
+    flex-grow: 1;
+    align-items: stretch;
+    max-height: 5.85em;
+    flex-basis: auto;
+}
+.flex-cell {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    justify-content: center;
+    border-width: 1px 1px 0px 0px;
+    border-style: solid;
+    border-color: $border-color;
+    flex-shrink: 0;
+    position: relative;
+    // flex-grow: 1;
+    // flex-basis: 0;
+}
+
+@include text-emphasis-variant('.text-danger', red);
