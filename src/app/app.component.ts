@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as x01 from './core/x01';
-
+import { createScore, Score, addPoints, endTurn } from './core/x01/score';
+import { getPointsLeft } from './core/x01/x01-game';
 
 @Component({
     selector: 'db-root',
@@ -9,22 +9,22 @@ import * as x01 from './core/x01';
 })
 export class AppComponent implements OnInit {
     title = 'app';
-    score: x01.Score;
+    score: Score;
 
     ngOnInit() {
         console.log('ngOnInit');
-        this.score = x01.createScore();
+        this.score = createScore({ points: 501 });
         this.score.points = 501;
     }
 
     scoreClicked() {
-        this.score = x01.addPoints(this.score, 20, 1);
-        this.score = x01.addPoints(this.score, 20, 1);
-        this.score = x01.addPoints(this.score, 20, 1);
-        this.score = x01.endTurn(this.score);
+        this.score = addPoints(this.score, 20, 1);
+        this.score = addPoints(this.score, 20, 1);
+        this.score = addPoints(this.score, 20, 1);
+        this.score = endTurn(this.score);
     }
 
     get pointsLeft(): number {
-        return x01.getPointsLeft(this.score);
+        return getPointsLeft(this.score);
     }
 }

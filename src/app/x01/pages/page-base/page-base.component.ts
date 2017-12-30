@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as X01 from '../../../core/x01';
+import { Game, createGame } from '../../../core/x01/game';
+import { endTurn } from '../../../core/x01/score';
+import { addPoints } from '../../../core/x01/game';
 
 @Component({
     selector: 'db-page-base',
@@ -8,49 +11,41 @@ import * as X01 from '../../../core/x01';
 })
 export class PageBaseComponent implements OnInit {
 
-    game: X01.X01Game;
+    game: Game;
 
     constructor() {
-        this.game = {
-            scores: [
-                X01.createScore(501),
-                X01.createScore(501),
-                // X01.createScore(501)
-            ],
-            doubleIn: false,
-            doubleOut: true
-        };
 
-        this.game.scores[0].team = {
-            players: [
-                { name: 'Darsh' },
-                { name: 'Darsh1' }
-            ]
-        };
-        this.game.scores[0].turns = [
+        const teams = [
             {
-                points: 60,
-                darts: 3
-            }
+                players: [
+                    { name: 'Darsh' },
+                    { name: 'Darsh1' }
+                ]
+            },
+            {
+                players: [
+                    { name: 'Rita' },
+                    { name: 'Rita1' }
+                ]
+            },
+            // {
+            //     players: [
+            //         { name: 'Jean Luc' },
+            //         { name: 'Riker' }
+            //     ]
+            // }
         ];
-        this.game.scores[1].team = {
-            players: [
-                { name: 'Rita' },
-                { name: 'Rita1' }
-            ]
-        };
-        // this.game.scores[2].team = {
-        //     players: [
-        //         { name: 'Jean Luc' }
-        //     ]
-        // };
+
+        this.game = createGame({ 
+            points: 501, 
+            doubleIn: false,
+            doubleOut: true,
+            teams
+        });
+
+        this.game = addPoints(this.game, teams[0], 60, 3);
+        this.game.scores[0] = endTurn(this.game.scores[0]);
     }
 
-
-
     ngOnInit() { }
-
-
-
-
 }

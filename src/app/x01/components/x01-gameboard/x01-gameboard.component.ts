@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
-import { X01Game } from '../../../core/x01';
+import { Game } from '../../../core/x01/game';
 import * as X01 from '../../../core/x01';
 
 @Component({
@@ -10,7 +10,7 @@ import * as X01 from '../../../core/x01';
 })
 export class X01GameboardComponent implements OnInit {
 
-    @Input() game: X01Game;
+    @Input() game: Game;
 
     X01 = X01;
 

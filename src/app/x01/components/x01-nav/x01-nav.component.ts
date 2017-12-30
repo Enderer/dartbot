@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
 import * as X01 from '../../../core/x01';
+import { Game } from '../../../core/x01/game';
 import * as R from 'ramda';
 
 @Component({
@@ -10,7 +11,7 @@ import * as R from 'ramda';
 })
 export class X01NavComponent implements OnInit {
 
-    @Input() game: X01.X01Game;
+    @Input() game: Game;
 
     getPlayer = X01.getCurrentPlayer;
 
