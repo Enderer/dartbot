@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as X01 from '../../../core/x01';
-import { Game, createGame } from '../../../core/x01/game';
-import { endTurn } from '../../../core/x01/score';
-import { addPoints } from '../../../core/x01/game';
+import { Game, createGame, endTurn, addPoints } from '../../../core/x01/game';
 
 @Component({
     selector: 'db-page-base',
@@ -44,7 +42,7 @@ export class PageBaseComponent implements OnInit {
         });
 
         this.game = addPoints(this.game, teams[0], 60, 3);
-        this.game.scores[0] = endTurn(this.game.scores[0]);
+        this.game = endTurn(this.game, teams[0]);
     }
 
     ngOnInit() { }

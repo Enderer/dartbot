@@ -17,7 +17,7 @@ describe('X01Game', () => {
         score1 = <Score>{
             points: 501,
             team: null,
-            current: null,
+            isPending: false,
             turns: [
                 { darts: 3, points: 60 },
                 { darts: 3, points: 60 },
@@ -27,7 +27,7 @@ describe('X01Game', () => {
         score2 = <Score>{
             points: 501,
             team: null,
-            current: null,
+            isPending: false,
             turns: [
                 { darts: 3, points: 60 },
                 { darts: null, points: null },
@@ -37,7 +37,7 @@ describe('X01Game', () => {
         score3 = <Score>{
             points: 501,
             team: null,
-            current: null,
+            isPending: false,
             turns: [
                 { darts: 3, points: 60 },
                 <X01.Turn>{ },

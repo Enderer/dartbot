@@ -29,6 +29,13 @@ describe('addPoints', () => {
       expect(score.isPending).toEqual(true);
   });
 
+  it('should handle no turns and isPending true', () => {
+    let score = createScore();
+    score.isPending = true;
+    score = addPoints(score, 60, 2);
+    expect(score.turns.length).toEqual(1);
+  });
+
   it('should be immutable', () => {
       expect(addPoints).toBeImmutable([createScore(), 100, 2]);
   });

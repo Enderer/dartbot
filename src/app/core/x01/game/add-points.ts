@@ -1,6 +1,8 @@
 import { Player, Team } from '../../player';
-import { Game, getScoreByTeam, setScore } from '../game';
-import { Score } from '../../x01';
+import { Game } from './game';
+import { setScore } from './set-score';
+import { getScoreByTeam } from './get-score-by-team';
+import { addPoints as addPointsToScore } from '../../x01/score';
 import * as R from 'ramda';
 
 /**
@@ -12,7 +14,7 @@ import * as R from 'ramda';
  */
 export const addPoints = (game: Game, team: Team, points: number, darts: number): Game => {
     const score = getScoreByTeam(game, team);
-    const nextScore = Score.addPoints(score, points, darts);
+    const nextScore = addPointsToScore(score, points, darts);
     if (nextScore == null) { return game; }
     return setScore(game, team, nextScore);
 };
