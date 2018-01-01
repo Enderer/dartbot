@@ -3,3 +3,4 @@ export * from './create-score';
 export * from './add-points';
 export * from './end-turn';
 export * from './cancel-turn';
+export * from './is-won';
