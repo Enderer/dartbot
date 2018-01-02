@@ -1,7 +1,7 @@
 import { Player, Team } from '../../player';
 import { Game } from './game';
 import { setScore } from './set-score';
-import { getScoreByTeam } from './get-score-by-team';
+import { getScore } from './get-score';
 import { addPoints as addPointsToScore } from '../../x01/score';
 import * as R from 'ramda';
 
@@ -13,8 +13,12 @@ import * as R from 'ramda';
  * @param darts Number of darts to add
  */
 export const addPoints = (game: Game, team: Team, points: number, darts: number): Game => {
-    const score = getScoreByTeam(game, team);
+    const score = getScore(game, team);
+    if (score == null) { return game; }
     const nextScore = addPointsToScore(score, points, darts);
-    if (nextScore == null) { return game; }
     return setScore(game, team, nextScore);
 };
+// export const addPoints = (game: Game, team: Team, points: number, darts: number): Game => {
+//     const h = R.compose(setScore(game, team), addPointsToScore(getScore(game, team)));
+//     return h(points, darts);
+// };

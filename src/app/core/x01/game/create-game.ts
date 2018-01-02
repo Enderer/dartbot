@@ -2,8 +2,7 @@ import { Game } from '.';
 import { createScore } from '../score';
 import { Team } from '../../player';
 
-export const createGame = (opts: GameOpts): Game => {
-
+export const createGame = (opts: GameOpts = {}): Game => {
     const defaults = {
         points: 0,
         doubleIn: false,

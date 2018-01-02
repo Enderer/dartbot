@@ -3,6 +3,7 @@ export * from './create-game';
 export * from './add-points';
 export * from './set-score';
 export * from './end-turn';
-export * from './get-score-by-team';
+export * from './get-score';
 export * from './get-winner';
+export * from './get-last-turn';
 export * from './is-won';

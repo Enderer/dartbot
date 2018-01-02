@@ -12,7 +12,7 @@ export const getWinner = (game: Game): Team => {
     if (game == null) { return null; }
     if (!(R.type(game.scores) === 'Array')) { return null; }
     const score = game.scores.find(s => isWon(s));
-    return score ? score.team || null : null;
+    return score ? score.team : null;
 };
 
 const findWon = R.find(isWon);

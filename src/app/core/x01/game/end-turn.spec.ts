@@ -1,6 +1,6 @@
 import { endTurn } from './end-turn';
 import { Player, Team } from '../../player';
-import { Game, createGame, getScoreByTeam } from '../game';
+import { Game, createGame, getScore } from '../game';
 import { addPoints } from './add-points';
 import { getPointsHit, getDarts } from '../x01-game';
 
@@ -32,18 +32,18 @@ describe('endTurn', () => {
         let game = games[0];
         game = addPoints(game, teams[0], 60, 3);
         game = endTurn(game, teams[0]);
-        const score = getScoreByTeam(game, teams[0]);
+        const score = getScore(game, teams[0]);
         expect(getPointsHit(score)).toEqual(60);
         expect(getDarts(score)).toEqual(3);
-        expect(getPointsHit(getScoreByTeam(game, teams[1]))).toEqual(0);
-        expect(getDarts(getScoreByTeam(game, teams[1]))).toEqual(0);
+        expect(getPointsHit(getScore(game, teams[1]))).toEqual(0);
+        expect(getDarts(getScore(game, teams[1]))).toEqual(0);
     });
 
     it('should end the in progress turn', () => {
         let game = games[0];
         const team = game.scores[0].team;
         game = endTurn(game, team);
-        const score = getScoreByTeam(game, team);
+        const score = getScore(game, team);
         expect(score.turns.length).toBe(0);
         expect(score.isPending).toBe(false);
     });

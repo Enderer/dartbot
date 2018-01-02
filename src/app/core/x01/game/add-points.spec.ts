@@ -1,6 +1,6 @@
 import { addPoints } from './add-points';
 import { Player, Team } from '../../player';
-import { Game, createGame, getScoreByTeam } from '../game';
+import { Game, createGame, getScore } from '../game';
 import { getPointsHit, getDarts } from '../x01-game';
 
 let players: Player[], teams: Team[], games: Game[];
@@ -29,11 +29,11 @@ describe('addPoints', () => {
     
     it('should add points to the correct score', () => {
         const game = addPoints(games[0], teams[0], 60, 3);
-        const score = getScoreByTeam(game, teams[0]);
+        const score = getScore(game, teams[0]);
         expect(getPointsHit(score)).toEqual(60);
         expect(getDarts(score)).toEqual(3);
-        expect(getPointsHit(getScoreByTeam(game, teams[1]))).toEqual(0);
-        expect(getDarts(getScoreByTeam(game, teams[1]))).toEqual(0);
+        expect(getPointsHit(getScore(game, teams[1]))).toEqual(0);
+        expect(getDarts(getScore(game, teams[1]))).toEqual(0);
     });
 
     it('should handle nulls', () => {

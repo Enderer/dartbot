@@ -2,23 +2,21 @@
     class="navbar navbar-expand navbar-dark bg-inverse px-0"
     style="border-bottom: 1px solid #000;">
 
-    <ul class="navbar-nav" style="flex: 1">
+    <ul class="navbar-nav w-100">
         <li class="nav-item w-100">
-            <a class="nav-link">
+            <a class="nav-link text-truncate">
                 {{getPlayer(game.scores[0])?.name}}
             </a>
         </li>
-    </ul>
-    <ul class="navbar-nav">
-        <li class="nav-item" style="border:0;">
-            <a class="nav-link px-4">
+
+        <li class="nav-item" style="width: 8rem;">
+            <a class="nav-link px-0">
                 <i class="fa fa-refresh"></i>
             </a>
         </li>
-    </ul>
-    <ul class="navbar-nav" style="flex: 1">
+
         <li class="nav-item w-100">
-            <a class="nav-link">
+            <a class="nav-link text-truncate">
                 {{getPlayer(game.scores[1])?.name}}
             </a>
         </li>
@@ -28,11 +26,13 @@
 
 <ng-template #multiTeams>
     <nav class="navbar navbar-expand navbar-dark bg-inverse">
-        <a class="navbar-brand" style="width: 5rem;">Multi</a>
+        <!-- <a class="navbar-brand" style="width: 5rem;">Multi</a> -->
     
-        <ul class="navbar-nav" style="flex: 1">
-            <li *ngFor="let score of game?.scores" class="nav-item">
-                <a class="nav-link" href="#">{{getPlayer(score)?.name}}</a>
+        <ul class="navbar-nav w-100" style="flex: 1">
+            <li *ngFor="let score of game?.scores" class="nav-item" style="flex:1">
+                <a class="nav-link text-truncate" href="#">
+                    {{getPlayer(score)?.name}}
+                </a>
             </li>
         </ul>
     </nav>

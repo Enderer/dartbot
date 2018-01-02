@@ -16,13 +16,13 @@ export class PageBaseComponent implements OnInit {
         const teams = [
             {
                 players: [
-                    { name: 'Darsh' },
-                    { name: 'Darsh1' }
+                    { name: 'Darsh kjlkj l lkj llj lljl jljl afmiaaf afam 1' },
+                    { name: 'Darsh1 lk;kj jl jlkj lkjlj l akdjalfjf sjfl  2' }
                 ]
             },
             {
                 players: [
-                    { name: 'Rita' },
+                    { name: 'Rita klkjl jl jkljlkj lj ljljljl j skafjl afjk sjklf  3' },
                     { name: 'Rita1' }
                 ]
             },
@@ -43,6 +43,13 @@ export class PageBaseComponent implements OnInit {
 
         this.game = addPoints(this.game, teams[0], 60, 3);
         this.game = endTurn(this.game, teams[0]);
+        this.game = addPoints(this.game, teams[1], 45, 3);
+        this.game = endTurn(this.game, teams[1]);
+        this.game = addPoints(this.game, teams[0], 60, 3);
+        this.game = endTurn(this.game, teams[0]);
+        this.game = addPoints(this.game, teams[1], 55, 3);
+        this.game = endTurn(this.game, teams[1]);
+
     }
 
     ngOnInit() { }

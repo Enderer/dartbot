@@ -9,6 +9,11 @@ describe('createGame', () => {
             doubleOut: true,
             scores: []
         });
+        expect(createGame()).toEqual({
+            doubleIn: false,
+            doubleOut: true,
+            scores: []
+        });
     });
 
     it('should create a game', () => {
